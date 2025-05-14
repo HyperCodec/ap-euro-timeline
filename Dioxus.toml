@@ -3,7 +3,7 @@
 [web.app]
 
 # HTML title tag content
-title = "ap-euro-timeline"
+title = "AP European History Timeline"
 
 # include `assets` in web platform
 [web.resource]

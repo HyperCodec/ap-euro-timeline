@@ -4,13 +4,16 @@ use crate::timeline_data::{TimePeriod, TimelineData, TimelineEvent};
 
 // https://www.geeksforgeeks.org/create-a-timeline-using-javascript/
 #[component]
-pub fn Timeline(events: TimelineData) -> Element {
+pub fn Timeline(data: TimelineData) -> Element {
+    let text = format!("{data:#?}");
     rsx! {
-        ul {
-            id: "timeline",
-            class: "timeline",
-        
-            // TODO
+        // ul {
+        //     id: "timeline",
+        //     class: "timeline",
+        //    // TODO stuff
+        // }
+        p {
+            "{text}"
         }
     }
 }

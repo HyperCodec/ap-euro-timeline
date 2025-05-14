@@ -1,3 +1,7 @@
+#[cfg(test)]
+mod tests;
+
+
 mod components;
 mod timeline_data;
 
