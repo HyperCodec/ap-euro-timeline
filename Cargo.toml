@@ -8,6 +8,7 @@ edition = "2021"
 
 [dependencies]
 dioxus = "0.6.0"
+lazy_static = "1.5.0"
 ron = "0.10.1"
 serde = { version = "1.0.219", features = ["derive"] }
 

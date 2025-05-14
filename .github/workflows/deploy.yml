@@ -1,0 +1,42 @@
+name: Build & Deploy
+
+on:
+    push:
+        branches: [main]
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+            - name: Install cargo-binstall
+              uses: cargo-bins/cargo-binstall@v1.12.4
+            - name: Install Dioxus CLI
+              run: cargo binstall dioxus-cli
+            - name: Bundle App
+              run: dx bundle
+            - name: Upload Artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: static-site
+                path: target/dx/ap-euro-timeline/release/web
+
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        environment: deploy
+
+        steps:
+            - uses: actions/checkout@v4
+            - name: Download Static Site
+              uses: actions/download-artifact@v4
+              with:
+                name: static-site
+                path: dist
+            - name: Deploy to `gh-pages` Branch
+              uses: peaceiris/actions-gh-pages@v4
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                publish_dir: dist

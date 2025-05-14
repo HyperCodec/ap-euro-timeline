@@ -1,5 +1,3 @@
-use dioxus::prelude::*;
-
 mod home;
 mod timeline;
 

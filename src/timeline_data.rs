@@ -1,3 +1,4 @@
+use lazy_static::lazy_static;
 use serde::{Serialize, Deserialize};
 
 pub type TimelineEvents = Vec<TimelineEvent>;
@@ -6,6 +7,12 @@ pub type TimelineEvents = Vec<TimelineEvent>;
 pub struct TimelineData {
     pub time_period: TimePeriod,
     pub events: TimelineEvents,
+}
+
+impl Default for TimelineData {
+    fn default() -> Self {
+        TIMELINE.clone()
+    }
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
@@ -39,8 +46,14 @@ pub struct SimpleDate {
     day: u32,
 }
 
+impl ToString for SimpleDate {
+    fn to_string(&self) -> String {
+        format!("{}/{}/{}", self.month, self.day, self.year)
+    }
+}
+
 const TIMELINE_RON: &str = include_str!("timeline.ron");
 
-pub fn parse_timeline() -> TimelineData {
-    ron::from_str(TIMELINE_RON).unwrap()
+lazy_static! {
+    pub static ref TIMELINE: TimelineData = ron::from_str(TIMELINE_RON).unwrap();
 }

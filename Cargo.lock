@@ -31,6 +31,7 @@ name = "ap-euro-timeline"
 version = "0.1.0"
 dependencies = [
  "dioxus",
+ "lazy_static",
  "ron",
  "serde",
 ]
