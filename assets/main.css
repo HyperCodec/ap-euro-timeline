@@ -60,13 +60,24 @@ body {
     color: #91a4d2;
 }
 
-/* Blog page */
-#blog {
-    margin-top: 50px;
-  }
-  
-#blog a {
-    color: #ffffff;
-    margin-top: 50px;
+/* Timeline */
+
+.timeline_base {
+    stroke: gray;
+    stroke-width: 4;
 }
 
+.timeline_tick {
+    stroke: gray;
+    stroke-width: 4;
+}
+
+.timeline_end_text {
+    fill: lightslategray;
+    font-size: 24;
+}
+
+.timeline_century_text {
+    fill: lightslategray;
+    font-size: 16;
+}
