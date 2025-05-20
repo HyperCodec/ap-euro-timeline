@@ -41,9 +41,9 @@ pub enum TimePeriod {
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct SimpleDate {
-    year: u32,
-    month: u32,
-    day: u32,
+    pub year: u32,
+    pub month: u32,
+    pub day: u32,
 }
 
 impl ToString for SimpleDate {

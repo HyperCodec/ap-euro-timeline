@@ -81,3 +81,8 @@ body {
     fill: lightslategray;
     font-size: 16;
 }
+
+.point_event {
+    /* temp color */
+    fill: green;
+}
