@@ -98,7 +98,7 @@ body {
 
 .timeline_event:hover line {
     transition: all 0.25s ease-out;
-    fill: cyan;
+    stroke: cyan;
 }
 
 .timeline_event:hover text {
