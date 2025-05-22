@@ -30,6 +30,7 @@
                 month: 7,
                 day: 14,
             )),
+            color: "red", // testing
         ),
         (
             title: "Revolutions of 1848",

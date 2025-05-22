@@ -8,6 +8,7 @@ const HEIGHT: u32 = 250;
 const SIDE_MARGIN: u32 = 25;
 const YEAR_TOP_MARGIN: u32 = 5;
 const EVENTS_BOTTOM_MARGIN: u32 = 5;
+const EVENTS_TEXT_MARGIN: u32 = 3;
 
 const END_RADIUS: u32 = 30;
 const END_YEAR_Y: u32 = CENTER_Y + END_RADIUS + YEAR_TOP_MARGIN;
@@ -53,7 +54,10 @@ fn TimelineBar(start: u32, end: u32, w: u32) -> Element {
     let right_bound = w - SIDE_MARGIN;
     
     rsx! {
-        line {
+        g {
+            class: "timeline_bar",
+
+            line {
                 class: "timeline_base",
                 x1: SIDE_MARGIN,
                 y1: CENTER_Y,
@@ -103,6 +107,7 @@ fn TimelineBar(start: u32, end: u32, w: u32) -> Element {
 
                 "{end.to_string()}"
             }
+        }
     }
 }
 
@@ -126,7 +131,7 @@ fn Tick(start: u32, year: u32, radius: u32) -> Element {
 fn Event(start: u32, data: TimelineEvent) -> Element {
     match data.time_period {
         TimePeriod::DateRange { .. } | TimePeriod::YearRange { .. } => rsx! {
-            RangeEvent { start, data }
+            RangeEvent { timeline_start: start, data }
         },
         TimePeriod::OneDate(_) | TimePeriod::OneYear(_) => rsx! {
             SingleEvent { start, data }
@@ -141,49 +146,135 @@ fn Event(start: u32, data: TimelineEvent) -> Element {
 // also need to get the hovering working.
 #[component]
 fn SingleEvent(start: u32, data: TimelineEvent) -> Element {
-    match data.time_period {
-        TimePeriod::OneYear(year) => {
-            let x = x_from_year(start, year) + POINT_EVENT_RADIUS;
-
-            rsx! {
-                circle {
-                    class: "point_event",
-
-                    cx: x,
-                    cy: EVENTS_Y,
-
-                    r: POINT_EVENT_RADIUS,
-
-                    // TODO color
-                }
-            }
-        },
+    let x = match &data.time_period {
+        TimePeriod::OneYear(year) => x_from_year(start, *year) + POINT_EVENT_RADIUS,
         TimePeriod::OneDate(date) => {
             // TODO `x_from_date`. using this now temporarily
             // so it doesn't panic
-            let x = x_from_year(start, date.year) + POINT_EVENT_RADIUS;
-
-            rsx! {
-                circle {
-                    class: "point_event",
-
-                    cx: x,
-                    cy: EVENTS_Y,
-
-                    r: POINT_EVENT_RADIUS,
-
-                    // TODO color
-                }
-            }
+            x_from_year(start, date.year) + POINT_EVENT_RADIUS
         },
         _ => panic!("invalid arg"),
+    };
+
+    rsx! {
+        PointEvent { x, data }
     }
 }
 
 #[component]
-fn RangeEvent(start: u32, data: TimelineEvent) -> Element {
-    rsx!{}
-    // todo!()
+fn PointEvent(x: u32, data: TimelineEvent) -> Element {
+    rsx! {
+        g {
+            class: "timeline_event",
+            onclick: move |_| {
+                // idk another way of doing this. the a tag doesn't seem to work.
+                document::eval(&format!("window.open(\"{}\", \"_blank\");", data.link));
+            },
+            
+            circle {
+                cx: x,
+                cy: EVENTS_Y,
+
+                r: POINT_EVENT_RADIUS,
+
+                fill: data.color,
+            }
+
+            text {
+                x,
+                y: EVENTS_Y - POINT_EVENT_RADIUS - EVENTS_TEXT_MARGIN,
+
+                text_anchor: "middle",
+
+                "{data.title}"
+            }
+        }
+    }
+}
+
+#[component]
+fn RangeEvent(timeline_start: u32, data: TimelineEvent) -> Element {
+    match &data.time_period {
+        TimePeriod::DateRange { start, end } => {
+            if end.year - start.year < 7 {
+                let x = x_from_year(timeline_start, start.year);
+                return rsx! {
+                    PointEvent {
+                        x,
+                        data,
+                    }
+                };
+            }
+
+            let (x1, x2) = (x_from_year(timeline_start, start.year), x_from_year(timeline_start, end.year));
+
+            rsx! {
+                LineEvent {
+                    start: timeline_start,
+                    x1,
+                    x2,
+                    data
+                }
+            }
+        },
+        TimePeriod::YearRange { start, end } => {
+            if end - start < 7 {
+                let x = x_from_year(timeline_start, *start);
+                return rsx! {
+                    PointEvent {
+                        x,
+                        data,
+                    }
+                };
+            }
+
+            let (x1, x2) = (x_from_year(timeline_start, *start), x_from_year(timeline_start, *end));
+
+            rsx! {
+                LineEvent {
+                    start: timeline_start,
+                    x1,
+                    x2,
+                    data
+                }
+            }
+        },
+        _ => panic!("invalid arg")
+    }
+}
+
+#[component]
+fn LineEvent(start: u32, x1: u32, x2: u32, data: TimelineEvent) -> Element {
+    rsx! {
+        g {
+            class: "timeline_event",
+            onclick: move |_| {
+                // idk another way of doing this. the a tag doesn't seem to work.
+                document::eval(&format!("window.open(\"{}\", \"_blank\");", data.link));
+            },
+
+            line {
+                x1,
+                y1: EVENTS_Y,
+                x2,
+                y2: EVENTS_Y,
+
+                stroke_width: 4,
+
+                stroke: data.color,
+            }
+
+            text {
+                x: x1,
+                y: EVENTS_Y - 2 - EVENTS_TEXT_MARGIN, 
+
+                text_anchor: "start",
+                dominant_baseline: "text-bottom",
+
+                "{data.title}"
+            }
+        }
+    }
 }
 
 #[component]

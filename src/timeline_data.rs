@@ -22,7 +22,13 @@ pub struct TimelineEvent {
     pub summary: String,
     pub link: String,
     pub time_period: TimePeriod,
-    pub color: Option<String>, // TODO idk if i want to keep
+
+    #[serde(default = "default_color")]
+    pub color: String,
+}
+
+fn default_color() -> String {
+    "green".to_string()
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]

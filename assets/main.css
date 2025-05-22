@@ -82,7 +82,26 @@ body {
     font-size: 16;
 }
 
-.point_event {
-    /* temp color */
-    fill: green;
+.timeline_event text {
+    fill: gray;
+    font-size: 9;
+}
+
+.timeline_event:hover {
+    cursor: pointer;
+}
+
+.timeline_event:hover circle {
+    transition: all 0.25s ease-out;
+    fill: cyan;
+}
+
+.timeline_event:hover line {
+    transition: all 0.25s ease-out;
+    fill: cyan;
+}
+
+.timeline_event:hover text {
+    transition: all 0.25s ease-out;
+    fill: cyan; /* TODO better color */
 }
