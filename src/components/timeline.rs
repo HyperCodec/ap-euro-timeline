@@ -269,7 +269,6 @@ fn LineEvent(start: u32, x1: u32, x2: u32, data: TimelineEvent) -> Element {
                 y: EVENTS_Y - 2 - EVENTS_TEXT_MARGIN, 
 
                 text_anchor: "start",
-                dominant_baseline: "text-bottom",
 
                 "{data.title}"
             }
