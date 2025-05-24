@@ -105,3 +105,30 @@ body {
     transition: all 0.25s ease-out;
     fill: cyan; /* TODO better color */
 }
+
+/* TODO idk why this isnt working */
+.event_info {
+    display: none;
+    opacity: 0;
+}
+
+.event_info .visible {
+    display: block;
+    opacity: 1;
+    animation: fadeInFromNone 0.25s ease-out;
+}
+
+@keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+    1% {
+        display: block;
+        opacity: 0;
+    }
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}

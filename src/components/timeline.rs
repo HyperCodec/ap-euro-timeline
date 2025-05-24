@@ -1,14 +1,20 @@
+use std::sync::{Arc, RwLock};
+
 use dioxus::prelude::*;
 
-use crate::timeline_data::{TimePeriod, TimelineData, TimelineEvent};
+use crate::timeline_data::{EventTime, SimpleDate, TimePeriod, TimelineData, TimelineEvent, Timestamp};
 
 // TODO maybe turn these into args of `Timeline`.
-const PIXELS_PER_YEAR: u32 = 5;
+const PIXELS_PER_YEAR: f32 = 5.0;
+const PIXELS_PER_MONTH: f32 = PIXELS_PER_YEAR as f32 / 12.0;
+const PIXELS_PER_DAY: f32 = PIXELS_PER_MONTH / 30.0;
+
 const HEIGHT: u32 = 250;
-const SIDE_MARGIN: u32 = 25;
+const SIDE_MARGIN: f32 = 25.0;
 const YEAR_TOP_MARGIN: u32 = 5;
 const EVENTS_BOTTOM_MARGIN: u32 = 5;
 const EVENTS_TEXT_MARGIN: u32 = 3;
+const EVENTS_SEPARATION_MARGIN: u32 = 20;
 
 const END_RADIUS: u32 = 30;
 const END_YEAR_Y: u32 = CENTER_Y + END_RADIUS + YEAR_TOP_MARGIN;
@@ -22,35 +28,54 @@ const CENTER_Y: u32 = HEIGHT / 2;
 const EVENTS_Y: u32 = CENTER_Y - END_RADIUS - EVENTS_BOTTOM_MARGIN;
 const POINT_EVENT_RADIUS: u32 = 5;
 
+const EVENT_INFO_WIDTH: u32 = 50;
+const EVENT_INFO_HEIGHT: u32 = 100;
+
 
 #[component]
 pub fn Timeline(data: TimelineData) -> Element {
-    let (start, end, years) = if let TimePeriod::YearRange { start, end } = data.time_period {
-        (start, end, end - start)
-    } else {
-        // TODO maybe an actual error
-        panic!("Overall timeline period must be in years");
-    };
+    let (start, end) = (data.time_period.start.year(), data.time_period.end.year());
+    let years = end - start;
 
-    let w = years * PIXELS_PER_YEAR + SIDE_MARGIN * 2;
+    let w = years as f32 * PIXELS_PER_YEAR + SIDE_MARGIN * 2.0;
+
+    let mut stacking = EventStackingManager::new();
+    let mut events: Vec<(TimelineEvent, u32, Signal<bool>)> = Vec::with_capacity(data.events.len());
+
+    // O(n^2) bad but idrc since it's only running
+    // once per page load. not worth optimizing.
+    for event in data.events {
+        let overlaps = stacking.register(event.time.clone());
+        let y = EVENTS_Y - overlaps * EVENTS_SEPARATION_MARGIN;
+        let is_hovered = use_signal(|| false);
+        events.push((event, y, is_hovered));
+    }
 
     rsx! {
-        svg {
-            id: "timeline",
-            width: w,
-            height: HEIGHT,
+        div {
+            svg {
+                id: "timeline",
+                width: w,
+                height: HEIGHT,
 
-            TimelineBar { start, end, w }
+                TimelineBar { start, end, w }
 
-            for event in data.events {
-                Event { start, data: event }
+                Events {
+                    start,
+                    events: events.clone(),
+                }
+            }
+
+            EventInfos {
+                start,
+                events,
             }
         }
     }
 }
 
 #[component]
-fn TimelineBar(start: u32, end: u32, w: u32) -> Element {
+fn TimelineBar(start: u32, end: u32, w: f32) -> Element {
     let right_bound = w - SIDE_MARGIN;
     
     rsx! {
@@ -112,6 +137,55 @@ fn TimelineBar(start: u32, end: u32, w: u32) -> Element {
 }
 
 #[component]
+fn EventInfos(start: u32, events: Vec<(TimelineEvent, u32, Signal<bool>)>) -> Element {
+    rsx! {
+        for (data, y, is_hovered) in events {
+            EventInfo {
+                cx: x_from_date(start, &data.time.start_date()),
+                bottom: y,
+                data,
+                is_hovered,
+            }
+        }
+    }
+}
+
+struct EventStackingManager {
+    already_placed: Vec<EventTime>,
+}
+
+impl EventStackingManager {
+    fn new() -> Self {
+        Self {
+            already_placed: Vec::new()
+        }
+    }
+
+    // registers and counts overlaps
+    fn register(&mut self, time: EventTime) -> u32 {
+        let mut overlaps = 0;
+        for time2 in &self.already_placed {
+            if time2.overlaps(&time) {
+                overlaps += 1;
+            }
+        }
+
+        self.already_placed.push(time);
+
+        overlaps
+    }
+}
+
+#[component]
+fn Events(start: u32, events: Vec<(TimelineEvent, u32, Signal<bool>)>) -> Element {
+    rsx! {
+        for (data, y, is_hovered) in events {
+            Event { start, data, y, is_hovered }
+        }
+    }
+}
+
+#[component]
 fn Tick(start: u32, year: u32, radius: u32) -> Element {
     let x = x_from_year(start, year);
 
@@ -128,41 +202,24 @@ fn Tick(start: u32, year: u32, radius: u32) -> Element {
 }
 
 #[component]
-fn Event(start: u32, data: TimelineEvent) -> Element {
-    match data.time_period {
-        TimePeriod::DateRange { .. } | TimePeriod::YearRange { .. } => rsx! {
-            RangeEvent { timeline_start: start, data }
-        },
-        TimePeriod::OneDate(_) | TimePeriod::OneYear(_) => rsx! {
-            SingleEvent { start, data }
-        }
+fn Event(start: u32, y: u32, data: TimelineEvent, is_hovered: Signal<bool>) -> Element {
+    match data.time.clone() {
+        EventTime::Single(time) => rsx! { SingleEvent { start, y, data, time, is_hovered } },
+        EventTime::Period(period) => rsx! { RangeEvent { start, y, data, period, is_hovered } },
     }
 }
 
-// TODO "stack" overlapping events.
-// probably need to keep track of registered
-// events, then add to y coord by some_num * overlap_count
-
-// also need to get the hovering working.
 #[component]
-fn SingleEvent(start: u32, data: TimelineEvent) -> Element {
-    let x = match &data.time_period {
-        TimePeriod::OneYear(year) => x_from_year(start, *year) + POINT_EVENT_RADIUS,
-        TimePeriod::OneDate(date) => {
-            // TODO `x_from_date`. using this now temporarily
-            // so it doesn't panic
-            x_from_year(start, date.year) + POINT_EVENT_RADIUS
-        },
-        _ => panic!("invalid arg"),
-    };
+fn SingleEvent(start: u32, y: u32, data: TimelineEvent, time: Timestamp, is_hovered: Signal<bool>) -> Element {
+    let x = x_from_date(start, &time.date());
 
     rsx! {
-        PointEvent { x, data }
+        PointEvent { x, y, data: data.clone(), is_hovered }
     }
 }
 
 #[component]
-fn PointEvent(x: u32, data: TimelineEvent) -> Element {
+fn PointEvent(x: u32, y: u32, data: TimelineEvent, mut is_hovered: Signal<bool>) -> Element {
     rsx! {
         g {
             class: "timeline_event",
@@ -170,10 +227,16 @@ fn PointEvent(x: u32, data: TimelineEvent) -> Element {
                 // idk another way of doing this. the a tag doesn't seem to work.
                 document::eval(&format!("window.open(\"{}\", \"_blank\");", data.link));
             },
+            onmouseenter: move |_| {
+                is_hovered.set(true);
+            },
+            onmouseleave: move |_| {
+                is_hovered.set(false);
+            },
             
             circle {
                 cx: x,
-                cy: EVENTS_Y,
+                cy: y,
 
                 r: POINT_EVENT_RADIUS,
 
@@ -182,7 +245,7 @@ fn PointEvent(x: u32, data: TimelineEvent) -> Element {
 
             text {
                 x,
-                y: EVENTS_Y - POINT_EVENT_RADIUS - EVENTS_TEXT_MARGIN,
+                y: y - POINT_EVENT_RADIUS - EVENTS_TEXT_MARGIN,
 
                 text_anchor: "middle",
 
@@ -193,58 +256,23 @@ fn PointEvent(x: u32, data: TimelineEvent) -> Element {
 }
 
 #[component]
-fn RangeEvent(timeline_start: u32, data: TimelineEvent) -> Element {
-    match &data.time_period {
-        TimePeriod::DateRange { start, end } => {
-            if end.year - start.year < 7 {
-                let x = x_from_year(timeline_start, start.year);
-                return rsx! {
-                    PointEvent {
-                        x,
-                        data,
-                    }
-                };
-            }
+fn RangeEvent(start: u32, y: u32, data: TimelineEvent, period: TimePeriod, is_hovered: Signal<bool>) -> Element {
+    let (x1, x2) = (x_from_date(start, &period.start.date()), x_from_date(start, &period.end.date()));
 
-            let (x1, x2) = (x_from_year(timeline_start, start.year), x_from_year(timeline_start, end.year));
-
-            rsx! {
-                LineEvent {
-                    start: timeline_start,
-                    x1,
-                    x2,
-                    data
-                }
-            }
-        },
-        TimePeriod::YearRange { start, end } => {
-            if end - start < 7 {
-                let x = x_from_year(timeline_start, *start);
-                return rsx! {
-                    PointEvent {
-                        x,
-                        data,
-                    }
-                };
-            }
-
-            let (x1, x2) = (x_from_year(timeline_start, *start), x_from_year(timeline_start, *end));
-
-            rsx! {
-                LineEvent {
-                    start: timeline_start,
-                    x1,
-                    x2,
-                    data
-                }
-            }
-        },
-        _ => panic!("invalid arg")
+    rsx! {
+        LineEvent {
+            start,
+            x1,
+            x2,
+            y,
+            data,
+            is_hovered,
+        }
     }
 }
 
 #[component]
-fn LineEvent(start: u32, x1: u32, x2: u32, data: TimelineEvent) -> Element {
+fn LineEvent(start: u32, x1: u32, x2: u32, y: u32, data: TimelineEvent, mut is_hovered: Signal<bool>) -> Element {
     rsx! {
         g {
             class: "timeline_event",
@@ -252,12 +280,18 @@ fn LineEvent(start: u32, x1: u32, x2: u32, data: TimelineEvent) -> Element {
                 // idk another way of doing this. the a tag doesn't seem to work.
                 document::eval(&format!("window.open(\"{}\", \"_blank\");", data.link));
             },
+            onmouseenter: move |_| {
+                is_hovered.set(true);
+            },
+            onmouseleave: move |_| {
+                is_hovered.set(false);
+            },
 
             line {
                 x1,
-                y1: EVENTS_Y,
+                y1: y,
                 x2,
-                y2: EVENTS_Y,
+                y2: y,
 
                 stroke_width: 4,
 
@@ -277,10 +311,18 @@ fn LineEvent(start: u32, x1: u32, x2: u32, data: TimelineEvent) -> Element {
 }
 
 #[component]
-fn EventInfo(data: TimelineEvent) -> Element {
+fn EventInfo(cx: u32, bottom: u32, data: TimelineEvent, is_hovered: Signal<bool>) -> Element {
     rsx! {
         div {
-            class: "card",
+            class: "event_info",
+            class: if *is_hovered.read() { "visible" },
+            position: "absolute",
+
+            right: cx + EVENT_INFO_WIDTH / 2,
+            bottom,
+
+            width: EVENT_INFO_WIDTH,
+            height: EVENT_INFO_HEIGHT,
             
             a {
                 href: "{data.link}",
@@ -289,29 +331,26 @@ fn EventInfo(data: TimelineEvent) -> Element {
             }
             p { "{data.summary}" }
 
-            // TODO figure out element for this
-            p { "{format_time_period(&data.time_period)}" }
+            // TODO figure out the element for this
+            p { "{data.time.to_string()}" }
         }
     }
 }
 
-fn format_time_period(period: &TimePeriod) -> String {
-    match period {
-        TimePeriod::OneDate(date) => date.to_string(),
-        TimePeriod::OneYear(year) => year.to_string(),
-        TimePeriod::DateRange { start, end } => format!("{}-{}", start.to_string(), end.to_string()),
-        TimePeriod::YearRange { start, end } => format!("{start}-{end}"),
-    }
-}
 fn ceil_neareset_ten(number: u32) -> u32 {
     ((number as f32 / 10.0).ceil() * 10.0) as u32
 }
 
-fn x_from_year(start: u32, year: u32) -> u32 {
-    let delta = year - start;
-    SIDE_MARGIN + delta * PIXELS_PER_YEAR
+fn x_from_date(start: u32, date: &SimpleDate) -> u32 {
+    let delta = date.year - start;
+    (SIDE_MARGIN + 
+        delta as f32 * PIXELS_PER_YEAR +
+        date.month as f32 * PIXELS_PER_MONTH +
+        date.day as f32 * PIXELS_PER_DAY
+    ).round() as u32
 }
 
-fn x_from_date(start: u32, day: u32, month: u32, year: u32) -> u32 {
-    todo!()
+fn x_from_year(start: u32, year: u32) -> u32 {
+    let delta = year - start;
+    (SIDE_MARGIN + delta as f32 * PIXELS_PER_YEAR).round() as u32
 }

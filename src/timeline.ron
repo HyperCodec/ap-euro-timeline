@@ -1,53 +1,53 @@
 (
-    time_period: YearRange(
-        start: 1300,
-        end: 2025,
+    time_period: (
+        start: Year(1300),
+        end: Year(2025),
     ),
     events: [
         (
             title: "French Revolution",
             summary: "A massive social and political upheaval in France. It resulted in the overthrow of the monarchy, the establishment of a republic, and the radical restructuring of French society.",
             link: "https://en.wikipedia.org/wiki/French_Revolution",
-            time_period: DateRange(
-                start: (
+            time: Period((
+                start: Date((
                     year: 1789,
                     month: 5,
                     day: 5,
-                ),
-                end: (
+                )),
+                end: Date((
                     year: 1799,
                     month: 11,
                     day: 9,
-                ),
-            ),
+                )),
+            )),
         ),
         (
             title: "Storming of the Bastille",
             summary: "One of the first major events of the French Revolution. French Revolutionary insurgents in Paris started a seige on the Bastille prison. They successfully took over and destroyed it.",
             link: "https://en.wikipedia.org/wiki/Storming_of_the_Bastille",
-            time_period: OneDate((
+            time: Single(Date((
                 year: 1789,
                 month: 7,
                 day: 14,
-            )),
+            ))),
             color: "red", // testing
         ),
         (
             title: "Revolutions of 1848",
             summary: "A series of revolutions throughout Western, Northern, and Central Europe. They were fueled by the nationalism spread throughout the Napoleonic Wars.",
             link: "https://en.wikipedia.org/wiki/Revolutions_of_1848",
-            time_period: DateRange(
-                start: (
+            time: Period((
+                start: Date((
                     year: 1848,
                     month: 1,
                     day: 12,
-                ),
-                end: (
+                )),
+                end: Date((
                     year: 1849,
                     month: 10,
                     day: 4,
-                ),
-            ),
+                )),
+            )),
         )
     ]
 )
