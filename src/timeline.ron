@@ -5,6 +5,283 @@
     ),
     events: [
         (
+            title: "Black Death",
+            summary: "A devastating pandemic that resulted in the deaths of an estimated 25 million people in Europe, significantly impacting the continent's social and economic structures.",
+            link: "https://en.wikipedia.org/wiki/Black_Death",
+            time: Period((
+                start: Date((
+                    year: 1347,
+                    month: 1,
+                    day: 1,
+                )),
+                end: Date((
+                    year: 1351,
+                    month: 12,
+                    day: 31,
+                )),
+            )),
+        ),
+        (
+            title: "Hundred Years' War",
+            summary: "A series of conflicts between England and France over succession to the French throne, significantly affecting both nations' development.",
+            link: "https://en.wikipedia.org/wiki/Hundred_Years%27_War",
+            time: Period((
+                start: Date((
+                    year: 1337,
+                    month: 1,
+                    day: 1,
+                )),
+                end: Date((
+                    year: 1453,
+                    month: 12,
+                    day: 31,
+                )),
+            )),
+        ),
+        (
+            title: "Council of Constance",
+            summary: "An ecumenical council that ended the Western Schism by deposing or accepting the resignation of the remaining papal claimants and electing Pope Martin V.",
+            link: "https://en.wikipedia.org/wiki/Council_of_Constance",
+            time: Period((
+                start: Date((
+                    year: 1414,
+                    month: 11,
+                    day: 5,
+                )),
+                end: Date((
+                    year: 1418,
+                    month: 4,
+                    day: 22,
+                )),
+            )),
+        ),
+        (
+            title: "Fall of Constantinople",
+            summary: "The capture of Constantinople by the Ottoman Empire, marking the end of the Byzantine Empire and a significant shift in European trade and politics.",
+            link: "https://en.wikipedia.org/wiki/Fall_of_Constantinople",
+            time: Single(Date((
+                year: 1453,
+                month: 5,
+                day: 29,
+            ))),
+        ),
+        (
+            title: "Printing Press Invented",
+            summary: "Johannes Gutenberg's invention of the movable-type printing press, revolutionizing the spread of information in Europe.",
+            link: "https://en.wikipedia.org/wiki/Printing_press",
+            time: Single(Date((
+                year: 1440,
+                month: 1,
+                day: 1,
+            ))),
+        ),
+        (
+            title: "Columbus Reaches the Americas",
+            summary: "Christopher Columbus's voyage leading to the European discovery of the American continents, initiating widespread exploration and colonization.",
+            link: "https://en.wikipedia.org/wiki/Christopher_Columbus",
+            time: Single(Date((
+                year: 1492,
+                month: 10,
+                day: 12,
+            ))),
+        ),
+        (
+            title: "Protestant Reformation Begins",
+            summary: "Martin Luther's publication of the 95 Theses, challenging the Catholic Church and initiating the Protestant Reformation.",
+            link: "https://en.wikipedia.org/wiki/Protestant_Reformation",
+            time: Single(Date((
+                year: 1517,
+                month: 10,
+                day: 31,
+            ))),
+        ),
+        (
+            title: "Peace of Augsburg",
+            summary: "A treaty allowing rulers within the Holy Roman Empire to choose either Lutheranism or Catholicism as their realm's religion.",
+            link: "https://en.wikipedia.org/wiki/Peace_of_Augsburg",
+            time: Single(Date((
+                year: 1555,
+                month: 9,
+                day: 25,
+            ))),
+        ),
+        (
+            title: "Defeat of the Spanish Armada",
+            summary: "The failed attempt by Spain's Armada to invade England, marking a turning point in naval warfare and shifting power balances in Europe.",
+            link: "https://en.wikipedia.org/wiki/Spanish_Armada",
+            time: Single(Date((
+                year: 1588,
+                month: 8,
+                day: 8,
+            ))),
+        ),
+        (
+            title: "Edict of Nantes",
+            summary: "A decree by Henry IV of France granting substantial rights to the Huguenots, promoting civil unity after the French Wars of Religion.",
+            link: "https://en.wikipedia.org/wiki/Edict_of_Nantes",
+            time: Single(Date((
+                year: 1598,
+                month: 4,
+                day: 13,
+            ))),
+        ),
+        (
+            title: "Thirty Years' War",
+            summary: "A devastating conflict across Central Europe, rooted in religious tensions, that reshaped the political and religious map of the continent.",
+            link: "https://en.wikipedia.org/wiki/Thirty_Years%27_War",
+            time: Period((
+                start: Date((
+                    year: 1618,
+                    month: 5,
+                    day: 23,
+                )),
+                end: Date((
+                    year: 1648,
+                    month: 10,
+                    day: 24,
+                )),
+            )),
+        ),
+        (
+            title: "Peace of Westphalia",
+            summary: "A series of treaties ending the Thirty Years' War, establishing principles of national sovereignty and non-intervention.",
+            link: "https://en.wikipedia.org/wiki/Peace_of_Westphalia",
+            time: Single(Date((
+                year: 1648,
+                month: 10,
+                day: 24,
+            ))),
+        ),
+        (
+            title: "English Civil War",
+            summary: "A series of armed conflicts and political machinations between Parliamentarians and Royalists, leading to the temporary overthrow of the monarchy.",
+            link: "https://en.wikipedia.org/wiki/English_Civil_War",
+            time: Period((
+                start: Date((
+                    year: 1642,
+                    month: 8,
+                    day: 22,
+                )),
+                end: Date((
+                    year: 1651,
+                    month: 9,
+                    day: 3,
+                )),
+            )),
+        ),
+        (
+            title: "Glorious Revolution",
+            summary: "The overthrow of King James II of England by a union of English Parliamentarians with William III, leading to constitutional monarchy.",
+            link: "https://en.wikipedia.org/wiki/Glorious_Revolution",
+            time: Single(Date((
+                year: 1688,
+                month: 11,
+                day: 5,
+            ))),
+        ),
+        (
+            title: "War of the Spanish Succession",
+            summary: "A European conflict triggered by the death of the childless Charles II of Spain, leading to a struggle over who should inherit the Spanish throne.",
+            link: "https://en.wikipedia.org/wiki/War_of_the_Spanish_Succession",
+            time: Period((
+                start: Date((
+                    year: 1701,
+                    month: 7,
+                    day: 9,
+                )),
+                end: Date((
+                    year: 1714,
+                    month: 9,
+                    day: 7,
+                )),
+            )),
+        ),
+        (
+            title: "Seven Years' War",
+            summary: "A global conflict involving most of the great powers, affecting Europe, North America, Central America, West Africa, India, and the Philippines.",
+            link: "https://en.wikipedia.org/wiki/Seven_Years%27_War",
+            time: Period((
+                start: Date((
+                    year: 1756,
+                    month: 5,
+                    day: 17,
+                )),
+                end: Date((
+                    year: 1763,
+                    month: 2,
+                    day: 15,
+                )),
+            )),
+        ),
+        (
+            title: "Napoleonic Wars",
+            summary: "A series of major conflicts pitting the French Empire and its allies, led by Napoleon I, against a fluctuating array of European powers.",
+            link: "https://en.wikipedia.org/wiki/Napoleonic_Wars",
+            time: Period((
+                start: Date((
+                    year: 1803,
+                    month: 5,
+                    day: 18,
+                )),
+                end: Date((
+                    year: 1815,
+                    month: 6,
+                    day: 20,
+                )),
+            )),
+        ),
+        (
+            title: "Congress of Vienna",
+            summary: "A conference of ambassadors of European states aimed at providing a long-term peace plan by settling issues arising from the French Revolutionary Wars and the Napoleonic Wars.",
+            link: "https://en.wikipedia.org/wiki/Congress_of_Vienna",
+            time: Period((
+                start: Date((
+                    year: 1814,
+                    month: 11,
+                    day: 1,
+                )),
+                end: Date((
+                    year: 1815,
+                    month: 6,
+                    day: 9,
+                )),
+            )),
+        ),
+        (
+            title: "Unification of Italy",
+            summary: "A political and social movement that consolidated different states of the Italian peninsula into the single state of Italy.",
+            link: "https://en.wikipedia.org/wiki/Italian_unification",
+            time: Period((
+                start: Date((
+                    year: 1848,
+                    month: 1,
+                    day: 1,
+                )),
+                end: Date((
+                    year: 1871,
+                    month: 3,
+                    day: 17,
+                )),
+            )),
+        ),
+        (
+            title: "Unification of Germany",
+            summary: "The process of consolidating various independent German states into a single nation-state, culminating in the proclamation of the German Empire.",
+            link: "https://en.wikipedia.org/wiki/Unification_of_Germany",
+            time: Period((
+                start: Date((
+                    year: 1864,
+                    month: 2,
+                    day: 1,
+                )),
+                end: Date((
+                    year: 1871,
+                    month: 1,
+                    day: 18,
+                )),
+            )),
+        ),
+        (
             title: "French Revolution",
             summary: "A massive social and political upheaval in France. It resulted in the overthrow of the monarchy, the establishment of a republic, and the radical restructuring of French society.",
             link: "https://en.wikipedia.org/wiki/French_Revolution",
@@ -30,7 +307,6 @@
                 month: 7,
                 day: 14,
             ))),
-            color: "red", // testing
         ),
         (
             title: "Revolutions of 1848",

@@ -9,7 +9,7 @@ const PIXELS_PER_YEAR: f32 = 5.0;
 const PIXELS_PER_MONTH: f32 = PIXELS_PER_YEAR as f32 / 12.0;
 const PIXELS_PER_DAY: f32 = PIXELS_PER_MONTH / 30.0;
 
-const HEIGHT: u32 = 250;
+const HEIGHT: u32 = 500;
 const SIDE_MARGIN: f32 = 25.0;
 const YEAR_TOP_MARGIN: u32 = 5;
 const EVENTS_BOTTOM_MARGIN: u32 = 5;
@@ -24,7 +24,7 @@ const CENTURY_Y: u32 = CENTER_Y + NORMAL_RADIUS + YEAR_TOP_MARGIN;
 
 const SMALL_RADIUS: u32 = 10;
 
-const CENTER_Y: u32 = HEIGHT / 2;
+const CENTER_Y: u32 = HEIGHT - END_RADIUS - YEAR_TOP_MARGIN - 25;
 const EVENTS_Y: u32 = CENTER_Y - END_RADIUS - EVENTS_BOTTOM_MARGIN;
 const POINT_EVENT_RADIUS: u32 = 5;
 
@@ -45,8 +45,7 @@ pub fn Timeline(data: TimelineData) -> Element {
     // O(n^2) bad but idrc since it's only running
     // once per page load. not worth optimizing.
     for event in data.events {
-        let overlaps = stacking.register(event.time.clone());
-        let y = EVENTS_Y - overlaps * EVENTS_SEPARATION_MARGIN;
+        let y = stacking.register(event.time.clone());
         let is_hovered = use_signal(|| false);
         events.push((event, y, is_hovered));
     }
@@ -151,7 +150,7 @@ fn EventInfos(start: u32, events: Vec<(TimelineEvent, u32, Signal<bool>)>) -> El
 }
 
 struct EventStackingManager {
-    already_placed: Vec<EventTime>,
+    already_placed: Vec<(EventTime, u32)>,
 }
 
 impl EventStackingManager {
@@ -161,18 +160,18 @@ impl EventStackingManager {
         }
     }
 
-    // registers and counts overlaps
+    // registers and sends the new Y
     fn register(&mut self, time: EventTime) -> u32 {
-        let mut overlaps = 0;
-        for time2 in &self.already_placed {
-            if time2.overlaps(&time) {
-                overlaps += 1;
+        let mut y = EVENTS_Y;
+        for (time2, y2) in &self.already_placed {
+            if *y2 <= y && time2.overlaps(&time) {
+                y = *y2 - EVENTS_SEPARATION_MARGIN;
             }
         }
 
-        self.already_placed.push(time);
+        self.already_placed.push((time, y));
 
-        overlaps
+        y
     }
 }
 
@@ -300,7 +299,7 @@ fn LineEvent(start: u32, x1: u32, x2: u32, y: u32, data: TimelineEvent, mut is_h
 
             text {
                 x: x1,
-                y: EVENTS_Y - 2 - EVENTS_TEXT_MARGIN, 
+                y: y - 2 - EVENTS_TEXT_MARGIN, 
 
                 text_anchor: "start",
 

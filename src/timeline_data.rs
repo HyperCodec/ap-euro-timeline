@@ -107,7 +107,8 @@ impl EventTime {
         match self {
             Self::Single(time) => match other {
                 Self::Single(time2) => {
-                    todo!("check radius of circles or something")
+                    // todo!("check radius of circles or something")
+                    time.year().abs_diff(time2.year()) <= 3
                 },
                 Self::Period(period) => period.contains(&time.date()),
             },
