@@ -28,8 +28,7 @@ const CENTER_Y: u32 = HEIGHT - END_RADIUS - YEAR_TOP_MARGIN - 25;
 const EVENTS_Y: u32 = CENTER_Y - END_RADIUS - EVENTS_BOTTOM_MARGIN;
 const POINT_EVENT_RADIUS: u32 = 5;
 
-const EVENT_INFO_WIDTH: u32 = 50;
-const EVENT_INFO_HEIGHT: u32 = 100;
+const EVENT_INFO_WIDTH: u32 = 200;
 
 
 #[component]
@@ -52,6 +51,8 @@ pub fn Timeline(data: TimelineData) -> Element {
 
     rsx! {
         div {
+            position: "relative",
+
             svg {
                 id: "timeline",
                 width: w,
@@ -141,7 +142,7 @@ fn EventInfos(start: u32, events: Vec<(TimelineEvent, u32, Signal<bool>)>) -> El
         for (data, y, is_hovered) in events {
             EventInfo {
                 cx: x_from_date(start, &data.time.start_date()),
-                bottom: y,
+                bottom: HEIGHT - y + POINT_EVENT_RADIUS + EVENTS_TEXT_MARGIN + 15,
                 data,
                 is_hovered,
             }
@@ -317,21 +318,17 @@ fn EventInfo(cx: u32, bottom: u32, data: TimelineEvent, is_hovered: Signal<bool>
             class: if *is_hovered.read() { "visible" },
             position: "absolute",
 
-            right: cx + EVENT_INFO_WIDTH / 2,
-            bottom,
+            left: format!("{}px", cx - EVENT_INFO_WIDTH / 2),
+            bottom: format!("{bottom}px"),
+            width: format!("{EVENT_INFO_WIDTH}px"),
 
-            width: EVENT_INFO_WIDTH,
-            height: EVENT_INFO_HEIGHT,
-            
-            a {
-                href: "{data.link}",
-                target: "_blank",
-                h3 { "{data.title}" }
-            }
+            h3 { "{data.title}" }
             p { "{data.summary}" }
 
-            // TODO figure out the element for this
-            p { "{data.time.to_string()}" }
+            p {
+                class: "footer",
+                "{data.time.to_string()}"
+            }
         }
     }
 }

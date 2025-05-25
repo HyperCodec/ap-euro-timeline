@@ -92,7 +92,7 @@ impl TimePeriod {
 
 impl ToString for TimePeriod {
     fn to_string(&self) -> String {
-        format!("{}-{}", self.start.to_string(), self.end.to_string())
+        format!("{} - {}", self.start.to_string(), self.end.to_string())
     }
 }
 
@@ -164,6 +164,9 @@ impl ToString for SimpleDate {
     }
 }
 
+// probably should make an asset instead
+// of including. however its a pretty small
+// file so i dont think it matters much.
 const TIMELINE_RON: &str = include_str!("timeline.ron");
 
 lazy_static! {

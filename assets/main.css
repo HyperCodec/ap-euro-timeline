@@ -1,63 +1,8 @@
-/* App-wide styling */
 body {
     background-color: #0f1116;
     color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 20px;
-}
-
-#hero {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#links {
-    width: 400px;
-    text-align: left;
-    font-size: x-large;
-    color: white;
-    display: flex;
-    flex-direction: column;
-}
-
-#links a {
-    color: white;
-    text-decoration: none;
-    margin-top: 20px;
-    margin: 10px 0px;
-    border: white 1px solid;
-    border-radius: 5px;
-    padding: 10px;
-}
-
-#links a:hover {
-    background-color: #1f1f1f;
-    cursor: pointer;
-}
-
-#header {
-    max-width: 1200px;
-}
-
-/* Navbar */
-#navbar {
-    display: flex;
-    flex-direction: row;
-  }
-  
-#navbar a {
-    color: #ffffff;
-    margin-right: 20px;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-#navbar a:hover {
-    cursor: pointer;
-    color: #91a4d2;
 }
 
 /* Timeline */
@@ -106,29 +51,56 @@ body {
     fill: cyan; /* TODO better color */
 }
 
-/* TODO idk why this isnt working */
 .event_info {
     display: none;
     opacity: 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    z-index: 10;
+    transform: translateY(10px);
+    pointer-events: none;
+    background-color: #1E2336;
+    color: #E0E6F2;
 }
 
-.event_info .visible {
+.event_info h3 {
+    color: white;
+    text-align: center;
+}
+
+.event_info p {
+    font-size: 13;
+}
+
+.event_info .footer {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    text-align: center;
+    font-style: italic;
+}
+
+.event_info.visible {
     display: block;
     opacity: 1;
-    animation: fadeInFromNone 0.25s ease-out;
+    transform: translateY(0px);
+    animation: fadeInUp 0.25s ease-out;
 }
 
-@keyframes fadeInFromNone {
+@keyframes fadeInUp {
     0% {
         display: none;
         opacity: 0;
+        transform: translateY(10px);
     }
     1% {
         display: block;
         opacity: 0;
+        transform: translateY(10px);
     }
     100% {
-        display: block;
         opacity: 1;
+        transform: translateY(0px);
     }
 }
