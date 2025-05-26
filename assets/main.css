@@ -5,6 +5,25 @@ body {
     margin: 20px;
 }
 
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+td {
+    color: #a3a3a3;
+}
+
+tr:nth-child(even) {
+  background-color: #171a22;
+}
+
 /* Timeline */
 
 .timeline_base {

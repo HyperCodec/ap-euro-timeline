@@ -72,7 +72,7 @@ pub struct TimePeriod {
 
 impl TimePeriod {
     pub fn contains(&self, date: &SimpleDate) -> bool {
-        &self.start.date() <= date && &self.end.date() >= date
+        self.start.year() <= date.year && self.end.year() >= date.year
     }
     
     pub fn overlaps(&self, other: &Self) -> bool {
@@ -123,6 +123,13 @@ impl EventTime {
         match self {
             Self::Single(time) => time.date(),
             Self::Period(period) => period.start.date(),
+        }
+    }
+    
+    pub fn duration_years(&self) -> u32 {
+        match self {
+            Self::Single(_) => 0,
+            Self::Period(period) => period.years(),
         }
     }
 }

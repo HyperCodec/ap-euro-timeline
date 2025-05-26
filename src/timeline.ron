@@ -9,17 +9,10 @@
             summary: "A devastating pandemic that resulted in the deaths of an estimated 25 million people in Europe, significantly impacting the continent's social and economic structures.",
             link: "https://en.wikipedia.org/wiki/Black_Death",
             time: Period((
-                start: Date((
-                    year: 1347,
-                    month: 1,
-                    day: 1,
-                )),
-                end: Date((
-                    year: 1351,
-                    month: 12,
-                    day: 31,
-                )),
+                start: Year(1348),
+                end: Year(1351),
             )),
+            color: "yellow",
         ),
         (
             title: "Hundred Years' War",
@@ -37,97 +30,42 @@
                     day: 31,
                 )),
             )),
+            color: "yellow",
         ),
         (
-            title: "Council of Constance",
-            summary: "An ecumenical council that ended the Western Schism by deposing or accepting the resignation of the remaining papal claimants and electing Pope Martin V.",
-            link: "https://en.wikipedia.org/wiki/Council_of_Constance",
+            title: "The Renaissance",
+            summary: "A rebirth of art and literature associated with the rediscovery of ancient Greek texts. Ended the Dark Ages and set humanity on a path toward modernity.",
+            link: "https://en.wikipedia.org/wiki/Renaissance",
             time: Period((
-                start: Date((
-                    year: 1414,
-                    month: 11,
-                    day: 5,
-                )),
-                end: Date((
-                    year: 1418,
-                    month: 4,
-                    day: 22,
-                )),
+                start: Year(1300),
+                end: Year(1527),
             )),
+            color: "purple",
         ),
         (
-            title: "Fall of Constantinople",
-            summary: "The capture of Constantinople by the Ottoman Empire, marking the end of the Byzantine Empire and a significant shift in European trade and politics.",
-            link: "https://en.wikipedia.org/wiki/Fall_of_Constantinople",
-            time: Single(Date((
-                year: 1453,
-                month: 5,
-                day: 29,
-            ))),
+            title: "Protestant Reformation",
+            summary: "A major religious movement that challenged the authority of the Catholic church.",
+            link: "https://en.wikipedia.org/wiki/Reformation",
+            time: Period((
+                start: Year(1517),
+                end: Year(1648)
+            )),
+            color: "purple",
         ),
         (
-            title: "Printing Press Invented",
-            summary: "Johannes Gutenberg's invention of the movable-type printing press, revolutionizing the spread of information in Europe.",
-            link: "https://en.wikipedia.org/wiki/Printing_press",
+            title: "Treaty of Westphalia",
+            summary: "Ended the Thirty Years' War and the use of religion to justify conflict.",
+            link: "https://en.wikipedia.org/wiki/Peace_of_Westphalia",
             time: Single(Date((
-                year: 1440,
-                month: 1,
-                day: 1,
-            ))),
-        ),
-        (
-            title: "Columbus Reaches the Americas",
-            summary: "Christopher Columbus's voyage leading to the European discovery of the American continents, initiating widespread exploration and colonization.",
-            link: "https://en.wikipedia.org/wiki/Christopher_Columbus",
-            time: Single(Date((
-                year: 1492,
+                year: 1648,
                 month: 10,
-                day: 12,
+                day: 24,
             ))),
-        ),
-        (
-            title: "Protestant Reformation Begins",
-            summary: "Martin Luther's publication of the 95 Theses, challenging the Catholic Church and initiating the Protestant Reformation.",
-            link: "https://en.wikipedia.org/wiki/Protestant_Reformation",
-            time: Single(Date((
-                year: 1517,
-                month: 10,
-                day: 31,
-            ))),
-        ),
-        (
-            title: "Peace of Augsburg",
-            summary: "A treaty allowing rulers within the Holy Roman Empire to choose either Lutheranism or Catholicism as their realm's religion.",
-            link: "https://en.wikipedia.org/wiki/Peace_of_Augsburg",
-            time: Single(Date((
-                year: 1555,
-                month: 9,
-                day: 25,
-            ))),
-        ),
-        (
-            title: "Defeat of the Spanish Armada",
-            summary: "The failed attempt by Spain's Armada to invade England, marking a turning point in naval warfare and shifting power balances in Europe.",
-            link: "https://en.wikipedia.org/wiki/Spanish_Armada",
-            time: Single(Date((
-                year: 1588,
-                month: 8,
-                day: 8,
-            ))),
-        ),
-        (
-            title: "Edict of Nantes",
-            summary: "A decree by Henry IV of France granting substantial rights to the Huguenots, promoting civil unity after the French Wars of Religion.",
-            link: "https://en.wikipedia.org/wiki/Edict_of_Nantes",
-            time: Single(Date((
-                year: 1598,
-                month: 4,
-                day: 13,
-            ))),
+            color: "red",
         ),
         (
             title: "Thirty Years' War",
-            summary: "A devastating conflict across Central Europe, rooted in religious tensions, that reshaped the political and religious map of the continent.",
+            summary: "One of the most destructive conflicts in European History. Catholic and Protestant countries engaged in open religious war, caused by tensions of the Reformation.",
             link: "https://en.wikipedia.org/wiki/Thirty_Years%27_War",
             time: Period((
                 start: Date((
@@ -141,189 +79,164 @@
                     day: 24,
                 )),
             )),
+            color: "yellow",
         ),
+        // TODO maybe the 4 phases of Thirty Years War (https://quizlet.com/439360858/chapter-15-the-four-phases-of-the-thirty-years-war-flash-cards/)
         (
-            title: "Peace of Westphalia",
-            summary: "A series of treaties ending the Thirty Years' War, establishing principles of national sovereignty and non-intervention.",
-            link: "https://en.wikipedia.org/wiki/Peace_of_Westphalia",
+            title: "Defenestration of Prague",
+            summary: "People in Prague threw Roman Catholic officials out of a window. This marked the beginning of the Thirty Years' War.",
+            link: "https://www.britannica.com/event/Defenestration-of-Prague-1618",
             time: Single(Date((
-                year: 1648,
-                month: 10,
-                day: 24,
+                year: 1618,
+                month: 5,
+                day: 23,
             ))),
+            color: "yellow",
         ),
         (
-            title: "English Civil War",
-            summary: "A series of armed conflicts and political machinations between Parliamentarians and Royalists, leading to the temporary overthrow of the monarchy.",
-            link: "https://en.wikipedia.org/wiki/English_Civil_War",
+            title: "Peace of Augsburg",
+            summary: "The treaty that ended religious struggle between Charles V and the Lutheran states of the Holy Roman Empire. It allowed rulers within the HRE to decide the religion of their territory, independent of the Emperor's religion. It was the first example of limited religious toleration.",
+            link: "https://en.wikipedia.org/wiki/Peace_of_Augsburg",
+            time: Single(Year(1555)),
+            color: "yellow",
+        ),
+        (
+            title: "Creation of the Printing Press",
+            summary: "Invented by Johannes Gutenberg, it greatly facilitated the spread of ideas by making it cheap to mass produce copies of a written work. Because literature became so much more readily available, the literacy rates rose. Literature was no longer only for the wealthy and powerful.",
+            link: "https://en.wikipedia.org/wiki/Printing_press",
+            time: Single(Year(1440)),
+            color: "orange",
+        ),
+        (
+            title: "Edict of Nantes",
+            summary: "Declared by King Henry IV, it granted religious tolerance to French Huguenots (Calvinists) in certain towns where they had a majority population.",
+            link: "https://en.wikipedia.org/wiki/Edict_of_Nantes",
+            time: Single(Date((
+                year: 1598,
+                month: 4,
+                day: 13,
+            ))),
+            color: "yellow",
+        ),
+        (
+            title: "Columbus Discovers America",
+            summary: "Columbus travels over the Atlantic Ocean and discovers America by mistake, revealing it to the rest of Europe.",
+            link: "https://en.wikipedia.org/wiki/Christopher_Columbus",
+            time: Single(Year(1492)),
+            color: "orange",
+        ),
+        (
+            title: "Age of Exploration",
+            summary: "Due to advancements in navigational technology, maps discovered as part of the Renaissance, and many other factors, Europeans began exploring and colonizing lands around the world.",
+            link: "https://en.wikipedia.org/wiki/Age_of_Discovery",
+            time: Period((
+                start: Year(1418),
+                end: Year(1620),
+            )),
+            color: "purple",
+        ),
+        (
+            title: "Spanish Armada",
+            summary: "A major failure for the Spanish navy, this marked the decline of Spain and the rise of England as a naval power.",
+            link: "https://en.wikipedia.org/wiki/Spanish_Armada",
+            time: Single(Year(1588)),
+            color: "yellow",
+        ),
+        (
+            title: "Reign of Louis XIV",
+            summary: "Louis XIV, under guidance of Cardinal Richelieu and Jean-Baptiste Colbert, implemented mercantilism and worked to centralize the power of the French state. Using things like Versailles, he successfully established absolute power over France.",
+            link: "https://en.wikipedia.org/wiki/Louis_XIV",
             time: Period((
                 start: Date((
-                    year: 1642,
-                    month: 8,
-                    day: 22,
+                    year: 1643,
+                    month: 5,
+                    day: 14
                 )),
                 end: Date((
-                    year: 1651,
+                    year: 1715,
                     month: 9,
-                    day: 3,
+                    day: 1,
                 )),
             )),
+            color: "yellow",
         ),
         (
-            title: "Glorious Revolution",
-            summary: "The overthrow of King James II of England by a union of English Parliamentarians with William III, leading to constitutional monarchy.",
-            link: "https://en.wikipedia.org/wiki/Glorious_Revolution",
-            time: Single(Date((
-                year: 1688,
-                month: 11,
-                day: 5,
-            ))),
+            title: "Copernican Hypothesis",
+            summary: "Copernicus publishes a theory that the Earth and all other planets in our solar system revolve around the Sun. This goes directly against Christian belief that the Earth is the center of the universe and the planets revolve around us.",
+            link: "https://en.wikipedia.org/wiki/Copernican_heliocentrism",
+            time: Single(Year(1543)),
+            color: "yellow",
         ),
         (
-            title: "War of the Spanish Succession",
-            summary: "A European conflict triggered by the death of the childless Charles II of Spain, leading to a struggle over who should inherit the Spanish throne.",
-            link: "https://en.wikipedia.org/wiki/War_of_the_Spanish_Succession",
+            title: "Age of Enlightenment",
+            summary: "Major intellectual movement throughout Europe. People began to apply reason and scientific principles to society, politics, and philosophy.",
+            link: "https://en.wikipedia.org/wiki/Age_of_Enlightenment",
             time: Period((
-                start: Date((
-                    year: 1701,
-                    month: 7,
-                    day: 9,
-                )),
-                end: Date((
-                    year: 1714,
-                    month: 9,
-                    day: 7,
-                )),
+                start: Year(1601),
+                end: Year(1800),
             )),
+            color: "purple",
+        ),
+        (
+            title: "Scientific Revolution",
+            summary: "A series of events that lead to the development of modern science.",
+            link: "https://en.wikipedia.org/wiki/Scientific_Revolution",
+            time: Period((
+                start: Year(1543),
+                end: Year(1687),
+            )),
+            color: "orange",
         ),
         (
             title: "Seven Years' War",
-            summary: "A global conflict involving most of the great powers, affecting Europe, North America, Central America, West Africa, India, and the Philippines.",
+            summary: "The war started because the Austrian Habsburgs wanted to regain Silesia from the War of Austrian Succession. It involved fighting both in Europe and in overseas colonies. The war ended by establishing Prussia as a great power and giving many of France's colonies to Great Britain.",
             link: "https://en.wikipedia.org/wiki/Seven_Years%27_War",
             time: Period((
-                start: Date((
-                    year: 1756,
-                    month: 5,
-                    day: 17,
-                )),
-                end: Date((
-                    year: 1763,
-                    month: 2,
-                    day: 15,
-                )),
+                start: Year(1756),
+                end: Year(1763),
             )),
+            color: "yellow",
         ),
         (
-            title: "Napoleonic Wars",
-            summary: "A series of major conflicts pitting the French Empire and its allies, led by Napoleon I, against a fluctuating array of European powers.",
-            link: "https://en.wikipedia.org/wiki/Napoleonic_Wars",
+            title: "War of Spanish Succession",
+            summary: "Louis XIV attempted to put his grandson on the Spanish throne, which would've upset the balance of power in Europe. The HRE, England, Prussia, and Portugal, among others, all fought against France in order to maintain the balance of power.",
+            link: "https://en.wikipedia.org/wiki/War_of_the_Spanish_Succession",
             time: Period((
-                start: Date((
-                    year: 1803,
-                    month: 5,
-                    day: 18,
-                )),
-                end: Date((
-                    year: 1815,
-                    month: 6,
-                    day: 20,
-                )),
+                start: Year(1701),
+                end: Year(1714),
             )),
+            color: "yellow",
         ),
         (
-            title: "Congress of Vienna",
-            summary: "A conference of ambassadors of European states aimed at providing a long-term peace plan by settling issues arising from the French Revolutionary Wars and the Napoleonic Wars.",
-            link: "https://en.wikipedia.org/wiki/Congress_of_Vienna",
+            title: "Peace of Utrecht",
+            summary: "Ended the War of Spanish Succession. Declared the importance of maintaining the balance of power.",
+            link: "https://en.wikipedia.org/wiki/Peace_of_Utrecht",
+            time: Single(Year(1714)),
+            color: "yellow",
+        ),
+        (
+            title: "Creation of the Guillotine",
+            summary: "The famous execution tool of the French Revolution. It was used to decapitate people efficiently.",
+            link: "https://en.wikipedia.org/wiki/Guillotine",
+            time: Single(Year(1789)),
+        ),
+        (
+            title: "World War I",
+            summary: "The first major war with modern military technology. It showed people just how destructive weapons had become, leading to the development of tactics like trade wars to avoid direct conflict at all cost.",
+            link: "https://en.wikipedia.org/wiki/World_War_I",
             time: Period((
                 start: Date((
-                    year: 1814,
+                    year: 1914,
+                    month: 7,
+                    day: 28,
+                )),
+                end: Date((
+                    year: 1918,
                     month: 11,
-                    day: 1,
-                )),
-                end: Date((
-                    year: 1815,
-                    month: 6,
-                    day: 9,
+                    day: 11,
                 )),
             )),
+            color: "orange",
         ),
-        (
-            title: "Unification of Italy",
-            summary: "A political and social movement that consolidated different states of the Italian peninsula into the single state of Italy.",
-            link: "https://en.wikipedia.org/wiki/Italian_unification",
-            time: Period((
-                start: Date((
-                    year: 1848,
-                    month: 1,
-                    day: 1,
-                )),
-                end: Date((
-                    year: 1871,
-                    month: 3,
-                    day: 17,
-                )),
-            )),
-        ),
-        (
-            title: "Unification of Germany",
-            summary: "The process of consolidating various independent German states into a single nation-state, culminating in the proclamation of the German Empire.",
-            link: "https://en.wikipedia.org/wiki/Unification_of_Germany",
-            time: Period((
-                start: Date((
-                    year: 1864,
-                    month: 2,
-                    day: 1,
-                )),
-                end: Date((
-                    year: 1871,
-                    month: 1,
-                    day: 18,
-                )),
-            )),
-        ),
-        (
-            title: "French Revolution",
-            summary: "A massive social and political upheaval in France. It resulted in the overthrow of the monarchy, the establishment of a republic, and the radical restructuring of French society.",
-            link: "https://en.wikipedia.org/wiki/French_Revolution",
-            time: Period((
-                start: Date((
-                    year: 1789,
-                    month: 5,
-                    day: 5,
-                )),
-                end: Date((
-                    year: 1799,
-                    month: 11,
-                    day: 9,
-                )),
-            )),
-        ),
-        (
-            title: "Storming of the Bastille",
-            summary: "One of the first major events of the French Revolution. French Revolutionary insurgents in Paris started a seige on the Bastille prison. They successfully took over and destroyed it.",
-            link: "https://en.wikipedia.org/wiki/Storming_of_the_Bastille",
-            time: Single(Date((
-                year: 1789,
-                month: 7,
-                day: 14,
-            ))),
-        ),
-        (
-            title: "Revolutions of 1848",
-            summary: "A series of revolutions throughout Western, Northern, and Central Europe. They were fueled by the nationalism spread throughout the Napoleonic Wars.",
-            link: "https://en.wikipedia.org/wiki/Revolutions_of_1848",
-            time: Period((
-                start: Date((
-                    year: 1848,
-                    month: 1,
-                    day: 12,
-                )),
-                end: Date((
-                    year: 1849,
-                    month: 10,
-                    day: 4,
-                )),
-            )),
-        )
     ]
 )

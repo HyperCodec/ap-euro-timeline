@@ -1,5 +1,3 @@
-use std::sync::{Arc, RwLock};
-
 use dioxus::prelude::*;
 
 use crate::timeline_data::{EventTime, SimpleDate, TimePeriod, TimelineData, TimelineEvent, Timestamp};
@@ -10,7 +8,7 @@ const PIXELS_PER_MONTH: f32 = PIXELS_PER_YEAR as f32 / 12.0;
 const PIXELS_PER_DAY: f32 = PIXELS_PER_MONTH / 30.0;
 
 const HEIGHT: u32 = 500;
-const SIDE_MARGIN: f32 = 25.0;
+const SIDE_MARGIN: f32 = 30.0;
 const YEAR_TOP_MARGIN: u32 = 5;
 const EVENTS_BOTTOM_MARGIN: u32 = 5;
 const EVENTS_TEXT_MARGIN: u32 = 3;
@@ -26,13 +24,16 @@ const SMALL_RADIUS: u32 = 10;
 
 const CENTER_Y: u32 = HEIGHT - END_RADIUS - YEAR_TOP_MARGIN - 25;
 const EVENTS_Y: u32 = CENTER_Y - END_RADIUS - EVENTS_BOTTOM_MARGIN;
-const POINT_EVENT_RADIUS: u32 = 5;
+const POINT_EVENT_RADIUS: u32 = 4;
 
 const EVENT_INFO_WIDTH: u32 = 200;
 
 
 #[component]
-pub fn Timeline(data: TimelineData) -> Element {
+pub fn Timeline(mut data: TimelineData) -> Element {
+    // put major time periods on top of everything else
+    data.events.sort_by(|a, b| a.time.duration_years().cmp(&b.time.duration_years()));
+    
     let (start, end) = (data.time_period.start.year(), data.time_period.end.year());
     let years = end - start;
 
@@ -141,7 +142,7 @@ fn EventInfos(start: u32, events: Vec<(TimelineEvent, u32, Signal<bool>)>) -> El
     rsx! {
         for (data, y, is_hovered) in events {
             EventInfo {
-                cx: x_from_date(start, &data.time.start_date()),
+                cx: x_from_time(start, &data.time),
                 bottom: HEIGHT - y + POINT_EVENT_RADIUS + EVENTS_TEXT_MARGIN + 15,
                 data,
                 is_hovered,
@@ -349,4 +350,15 @@ fn x_from_date(start: u32, date: &SimpleDate) -> u32 {
 fn x_from_year(start: u32, year: u32) -> u32 {
     let delta = year - start;
     (SIDE_MARGIN + delta as f32 * PIXELS_PER_YEAR).round() as u32
+}
+
+fn x_from_period(start: u32, period: &TimePeriod) -> u32 {
+    (x_from_date(start, &period.start.date()) + x_from_date(start, &period.end.date())) / 2
+}
+
+fn x_from_time(start: u32, time: &EventTime) -> u32 {
+    match time {
+        EventTime::Single(time) => x_from_date(start, &time.date()),
+        EventTime::Period(period) => x_from_period(start, period),
+    }
 }
