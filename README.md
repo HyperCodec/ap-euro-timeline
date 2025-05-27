@@ -1,34 +1,18 @@
-# Development
+# AP European History Timeline
 
-Your new bare-bones project includes minimal organization with a single `main.rs` file and a few assets.
+The site is being hosted [here](https://timeline.static.domains/).
 
-```
-project/
-├─ assets/ # Any assets that are used by the app should be placed here
-├─ src/
-│  ├─ main.rs # main.rs is the entry point to your application and currently contains all components for the app
-├─ Cargo.toml # The Cargo.toml file defines the dependencies and feature flags for your project
-```
+This was created as my AP European History final project. Coming into this, I had hardly any experience with frontend, and wanted to use this oppportunity to learn more about it while also trying out Dioxus.
 
-### Tailwind
-1. Install npm: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
-2. Install the Tailwind CSS CLI: https://tailwindcss.com/docs/installation
-3. Run the following command in the root of the project to start the Tailwind CSS compiler:
+It contains a lot of the more important AP Euro events, but definitely doesn't have all of them (I was running out of time to go super in-depth, and it probably wouldn't have looked good anyway).
+I let my code get a bit spaghetti, but that's mostly because I didn't have time to rewrite things in a less sloppy way (plus I was still learning).
 
-```bash
-npx tailwindcss -i ./input.css -o ./assets/tailwind.css --watch
-```
+I disabled the GitHub Pages site because of some issues related to the path, but the branch is still available for the static site files.
 
-### Serving Your App
-
-Run the following command in the root of your project to start developing with the default platform:
-
-```bash
-dx serve
-```
-
-To run for a different platform, use the `--platform platform` flag. E.g.
-```bash
-dx serve --platform desktop
-```
-
+### Key Takeaways
+- Making a (decently) complex graph with practically no HTML/CSS experience in a framework where (afaik) you can't use existing js libs &mdash; all on a tight deadline &mdash; is probably not the best idea for a final project.
+- Procrastinating with the actual content of the project until the last few days, then having to work for ~9 hours straight on a day off, is also not a great idea.
+- SVG and HTML don't mix very well (CSS works with both though :D)
+- Dioxus probably isn't worth using when just implementing frontend &mdash; the fullstack feature eliminates a lot of the boilerplate, but using it for frontend alone just makes the process of developing a UI more complicated.
+- Don't do frontend when the school chromebooks have inspect element disabled (especially if you're planning on using newer frameworks like Dioxus).
+- CSS is actually a lot simpler than I thought it would be.
