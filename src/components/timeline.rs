@@ -260,6 +260,18 @@ fn PointEvent(x: u32, y: u32, data: TimelineEvent, mut is_hovered: Signal<bool>)
 fn RangeEvent(start: u32, y: u32, data: TimelineEvent, period: TimePeriod, is_hovered: Signal<bool>) -> Element {
     let (x1, x2) = (x_from_date(start, &period.start.date()), x_from_date(start, &period.end.date()));
 
+    if period.years() < 3 {
+        let mid = (x1 + x2) / 2;
+        return rsx! {
+            PointEvent {
+                x: mid,
+                y,
+                data,
+                is_hovered,
+            }
+        }
+    }
+
     rsx! {
         LineEvent {
             start,

@@ -72,7 +72,9 @@ pub struct TimePeriod {
 
 impl TimePeriod {
     pub fn contains(&self, date: &SimpleDate) -> bool {
-        self.start.year() <= date.year && self.end.year() >= date.year
+        // the extra 5 boundary probably doesn't belong here 
+        // since this is a time type, but it's only being used in one place.
+        self.start.year() - 5 <= date.year && self.end.year() + 5 >= date.year
     }
     
     pub fn overlaps(&self, other: &Self) -> bool {
@@ -107,8 +109,8 @@ impl EventTime {
         match self {
             Self::Single(time) => match other {
                 Self::Single(time2) => {
-                    // todo!("check radius of circles or something")
-                    time.year().abs_diff(time2.year()) <= 3
+                    // TODO check text length or something instead
+                    time.year().abs_diff(time2.year()) <= 10
                 },
                 Self::Period(period) => period.contains(&time.date()),
             },

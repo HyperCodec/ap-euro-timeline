@@ -53,8 +53,32 @@
             color: "purple",
         ),
         (
+            title: "Luther's 95 Theses",
+            summary: "Martin Luther proposed the 95 Theses arguing against the sale of indulgences. This was the first major challenge to the Catholic Church's authority, and sparked Protestantism.",
+            link: "https://en.wikipedia.org/wiki/Ninety-five_Theses",
+            time: Single(Date((
+                year: 1517,
+                month: 10,
+                day: 31,
+            ))),
+            color: "yellow",
+        ),
+        (
+            title: "Act of Supremacy",
+            summary: "King Henry VIII wanted to divorce his wife, but the pope would not allow it. Thus, he passed the Act of Supremacy and founded the Anglican Church so that he could legally divorce her. This is the first case where the state takes power over the Church and uses it to accomplish its goals.",
+            link: "https://en.wikipedia.org/wiki/Acts_of_Supremacy",
+            time: Single(Year(1534)),
+            color: "yellow",
+        ),
+        (
+            title: "German Peasants' Revolt",
+            summary: "Peasants demanded agrarian rights, using Lutheranism to back their argument. Because Luther depended on German nobles for protection, however, he argued against the revolts. This showed how Luther was willing to put personal matters over religious ones, even though he started Lutheranism.",
+            link: "https://www.britannica.com/event/Peasants-War",
+            time: Single(Year(1524)),
+        ),
+        (
             title: "Treaty of Westphalia",
-            summary: "Ended the Thirty Years' War and the use of religion to justify conflict.",
+            summary: "Ended the Thirty Years' War and the use of religion to justify conflict. Marked the beginning of the end for the Holy Roman Empire.",
             link: "https://en.wikipedia.org/wiki/Peace_of_Westphalia",
             time: Single(Date((
                 year: 1648,
@@ -64,7 +88,26 @@
             color: "red",
         ),
         (
-            title: "Thirty Years' War",
+            title: "Council of Trent",
+            summary: "Reaffirmed the traditional teachings of the Chruch including clerical celibacy, vulgate Bible, papal authority, and sale of indulgences. However, it attempted to eliminate corruption, and the clergy became better educated and respected. Luther was invited but didn't show up.",
+            link: "https://en.wikipedia.org/wiki/Council_of_Trent",
+            time: Period((
+                start: Year(1534),
+                end: Year(1563),
+            )),
+            color: "yellow",
+        ),
+        (
+            title: "Witchcraft Persecution",
+            summary: "The religious tensions caused by the Reformation led to persecution of women classified as \"witches\". The witchcraft accusations and trials were widespread throughout Europe, and even spread as far as Salem. Around 100,000 people were executed.",
+            link: "https://www.britannica.com/topic/witch-hunt",
+            time: Period((
+                start: Year(1580),
+                end: Year(1700),
+            )),
+        ),
+        (
+            title: "30 Years' War",
             summary: "One of the most destructive conflicts in European History. Catholic and Protestant countries engaged in open religious war, caused by tensions of the Reformation.",
             link: "https://en.wikipedia.org/wiki/Thirty_Years%27_War",
             time: Period((
@@ -81,7 +124,6 @@
             )),
             color: "yellow",
         ),
-        // TODO maybe the 4 phases of Thirty Years War (https://quizlet.com/439360858/chapter-15-the-four-phases-of-the-thirty-years-war-flash-cards/)
         (
             title: "Defenestration of Prague",
             summary: "People in Prague threw Roman Catholic officials out of a window. This marked the beginning of the Thirty Years' War.",
@@ -126,6 +168,16 @@
             color: "orange",
         ),
         (
+            title: "Columbian Exchange",
+            summary: "Exchange of diseases, plants, animals, slaves, and technology between Europe and the Americas. Some crops, such as potatoes and maize, were extremely efficient food sources and helped increase Europe's population and living standards.",
+            link: "https://www.britannica.com/event/Columbian-exchange",
+            time: Period((
+                start: Year(1492),
+                end: Year(1600),
+            )),
+            color: "orange",
+        ),
+        (
             title: "Age of Exploration",
             summary: "Due to advancements in navigational technology, maps discovered as part of the Renaissance, and many other factors, Europeans began exploring and colonizing lands around the world.",
             link: "https://en.wikipedia.org/wiki/Age_of_Discovery",
@@ -136,6 +188,16 @@
             color: "purple",
         ),
         (
+            title: "Commercial Revolution",
+            summary: "This revolution encompasses the integration of mercantilism, development of joint-stock companies, and general expansion of trade as a result of the Columbian Exchange and the broader Age of Exploration.",
+            link: "https://en.wikipedia.org/wiki/Commercial_revolution",
+            time: Period((
+                start: Year(1500),
+                end: Year(1650),
+            )),
+            color: "orange",
+        ),
+        (
             title: "Spanish Armada",
             summary: "A major failure for the Spanish navy, this marked the decline of Spain and the rise of England as a naval power.",
             link: "https://en.wikipedia.org/wiki/Spanish_Armada",
@@ -143,8 +205,18 @@
             color: "yellow",
         ),
         (
+            title: "British East India Company",
+            summary: "An extremely powerful company founded by the British government. It had an army larger than the main British army, and held influence over Parliament. It was the main source of income for Britain that allowed it to become a powerful state.",
+            link: "https://en.wikipedia.org/wiki/East_India_Company",
+            time: Period((
+                start: Year(1600),
+                end: Year(1874),
+            )),
+            color: "yellow",
+        ),
+        (
             title: "Reign of Louis XIV",
-            summary: "Louis XIV, under guidance of Cardinal Richelieu and Jean-Baptiste Colbert, implemented mercantilism and worked to centralize the power of the French state. Using things like Versailles, he successfully established absolute power over France.",
+            summary: "Louis XIV, under guidance of Cardinal Richelieu and Jean-Baptiste Colbert, implemented mercantilism and worked to centralize the power of the French state. Using things like Versailles, he successfully established absolute power over France. By the end of his reign, France was economically devastated by the amount spent on wars.",
             link: "https://en.wikipedia.org/wiki/Louis_XIV",
             time: Period((
                 start: Date((
@@ -165,7 +237,21 @@
             summary: "Copernicus publishes a theory that the Earth and all other planets in our solar system revolve around the Sun. This goes directly against Christian belief that the Earth is the center of the universe and the planets revolve around us.",
             link: "https://en.wikipedia.org/wiki/Copernican_heliocentrism",
             time: Single(Year(1543)),
-            color: "yellow",
+            color: "orange",
+        ),
+        (
+            title: "Indcutive Reasoning",
+            summary: "Francis Bacon invents inductive reasoning, which provides a framework for scientific experimentation and verification.",
+            link: "https://en.wikipedia.org/wiki/Inductive_reasoning",
+            time: Single(Year(1620)),
+            color: "orange",
+        ),
+        (
+            title: "Deductive Reasoning",
+            summary: "Rene Descartes develops a deductive approach to knowledge, subjecting every assertion to doubt until it can be proven with absolute certainty. Once even doubted his own existence, until he proved it with \"I think; therefore, I am.\".",
+            link: "https://en.wikipedia.org/wiki/Deductive_reasoning",
+            time: Single(Year(1637)),
+            color: "orange",
         ),
         (
             title: "Age of Enlightenment",
@@ -188,7 +274,7 @@
             color: "orange",
         ),
         (
-            title: "Seven Years' War",
+            title: "7 Years' War",
             summary: "The war started because the Austrian Habsburgs wanted to regain Silesia from the War of Austrian Succession. It involved fighting both in Europe and in overseas colonies. The war ended by establishing Prussia as a great power and giving many of France's colonies to Great Britain.",
             link: "https://en.wikipedia.org/wiki/Seven_Years%27_War",
             time: Period((
@@ -215,13 +301,280 @@
             color: "yellow",
         ),
         (
-            title: "Creation of the Guillotine",
+            title: "English Civil War",
+            summary: "Charles I sought to obtain absolute control over England. He refused to call Parliament into session for his decisions, causing a civil war. He is eventually defeated and executed by Parliament, with Oliver Cromwell briefly putting England under a protectorate. Charles II, a Politique, tries to put everything back together, but ultimately fails.",
+            link: "https://en.wikipedia.org/wiki/English_Civil_War",
+            time: Period((
+                start: Year(1641),
+                end: Year(1649),
+            )),
+            color: "yellow",
+        ),
+        (
+            title: "Glorious Revolution",
+            summary: "James II, son of Charles II, alienated Parliament once again. Emboldened by the execution of Charles I, Parliament decides to overthrow him and put William III and Mary II in his place. They then force William to sign the Act of Succession, Bill of Rights, and Toleration Act.",
+            link: "https://en.wikipedia.org/wiki/Glorious_Revolution",
+            time: Single(Year(1689)),
+            color: "yellow",
+        ),
+        (
+            title: "Act of Succession",
+            summary: "Destroys the idea of \"Divine Right\"; succession to Crown now lays with the legislature.",
+            link: "https://www.britannica.com/topic/Act-of-Succession",
+            time: Single(Year(1701)),
+            color: "yellow",
+        ),
+        (
+            title: "Bill of Rights",
+            summary: "Inspired primarily by the ideas of John Locke, it grants individual liberties and prevents arbitrary royal acts. A major win for liberalism.",
+            link: "https://en.wikipedia.org/wiki/Bill_of_Rights_1689",
+            time: Single(Year(1689)),
+            color: "orange",
+        ),
+        (
+            title: "Toleration Act",
+            summary: "Allows any religion to be practiced freely as long as it is in private.",
+            link: "https://en.wikipedia.org/wiki/Toleration_Act_1688",
+            time: Single(Year(1689)),
+            color: "yellow",
+        ),
+        (
+            title: "Edict of Fontainebleau",
+            summary: "Louis XIV revoked the Edict of Nantes",
+            link: "https://en.wikipedia.org/wiki/Edict_of_Fontainebleau",
+            time: Single(Year(1685)),
+            color: "yellow",
+        ),
+        (
+            title: "Dutch Golden Age",
+            summary: "The Dutch made tons of money by transporting goods with their superior ships. This ends when Britain releases the Navigation Acts, which cut the Dutch out of the British market.",
+            link: "https://en.wikipedia.org/wiki/Dutch_Golden_Age",
+            time: Period((
+                start: Year(1588),
+                end: Year(1672),
+            )),
+            color: "yellow",
+        ),
+        (
+            title: "Putting-Out System",
+            summary: "The putting-out system was a way for families to make money in the growing commercial economy. Merchants would give materials to a household, and the household would give the finished product back to the merchant and take a portion of the profit. This system worked up until proletarianization.",
+            link: "https://en.wikipedia.org/wiki/Putting-out_system",
+            time: Period((
+                start: Year(1600),
+                end: Year(1750),
+            )),
+            color: "yellow",
+        ),
+        (
+            title: "Agricultural Revolution",
+            summary: "An increase in agricultural production in Britain due to more land and labor, as well as new farming methods such as crop rotation and enclosure.",
+            link: "https://en.wikipedia.org/wiki/British_Agricultural_Revolution",
+            time: Period((
+                start: Year(1650),
+                end: Year(1848),
+            )),
+            color: "orange",
+        ),
+        (
+            title: "First Industrial Revolution",
+            summary: "The transition of the global economy into stable, efficient manufacturing processes following a population boom caused by the Agricultural Revolution. Many important machines were invented during this time. It influenced virtually all aspects of life, from class struggle to quality of life.",
+            link: "https://en.wikipedia.org/wiki/Industrial_Revolution",
+            time: Period((
+                start: Year(1760),
+                end: Year(1840),
+            )),
+            color: "purple",
+        ),
+        (
+            title: "Steam Engine",
+            summary: "A revolutionary piece of technology, the steam engine allowed for efficient, portable mechanical energy. This lead to the creation of steam-powered transportation, accessible factories, and much more.",
+            link: "https://en.wikipedia.org/wiki/Watt_steam_engine",
+            time: Single(Year(1776)),
+            color: "orange",
+        ),
+        (
+            title: "Water Frame",
+            summary: "A spinning frame powered by a water wheel, the water frame allowed for more efficient production of textiles.",
+            link: "https://en.wikipedia.org/wiki/Water_frame",
+            time: Single(Year(1765)),
+            color: "yellow",
+        ),
+        (
+            title: "Guillotine Invented",
             summary: "The famous execution tool of the French Revolution. It was used to decapitate people efficiently.",
             link: "https://en.wikipedia.org/wiki/Guillotine",
             time: Single(Year(1789)),
         ),
         (
-            title: "World War I",
+            title: "French Revolution",
+            summary: "With France in shambles from the reign of Louis XIV, people were tired of absolutism. They felt that France needed radical change.",
+            link: "https://en.wikipedia.org/wiki/French_Revolution",
+            time: Period((
+                start: Date((
+                    year: 1789,
+                    month: 5,
+                    day: 5,
+                )),
+                end: Date((
+                    year: 1799,
+                    month: 11,
+                    day: 9,
+                )),
+            )),
+            color: "purple",
+        ),
+        (
+            title: "Estates General",
+            summary: "The Estates General was called together by Louis XVI to resolve the crises happening in France at the time. However, 2/3 of the Estates General was controlled by the nobles and the clergy, leaving just 1/3 vote for the majority of people. Thus, the people formed the National Assembly.",
+            link: "https://www.worldhistory.org/Estates-General_of_1789/",
+            time: Single(Year(1789)),
+            color: "yellow",
+        ),
+        (
+            title: "Storming of the Bastille",
+            summary: "Revolutionary insurgents took over and destroyed the Bastille prison. This was the first major violent conflict of the French Revolution.",
+            link: "https://en.wikipedia.org/wiki/Storming_of_the_Bastille",
+            time: Single(Date((
+                year: 1789,
+                month: 7,
+                day: 14,
+            ))),
+            color: "yellow",
+        ),
+        (
+            title: "Reign of Terror",
+            summary: "Lead by Robespierre, the Committee of Public Safety executed thousands of people via guillotine.",
+            link: "https://en.wikipedia.org/wiki/Reign_of_Terror",
+            time: Period((
+                start: Year(1793),
+                end: Year(1794),
+            )),
+            color: "yellow",
+        ),
+        (
+            title: "Execution of Louis XVI",
+            summary: "The Committee of Public Safety found their own King guilty of treason and executed him for it. Marie Antoinette was executed soon after.",
+            link: "https://en.wikipedia.org/wiki/Execution_of_Louis_XVI",
+            time: Single(Date((
+                year: 1793,
+                month: 1,
+                day: 21,
+            ))),
+            color: "yellow",
+        ),
+        (
+            title: "Napoleonic Era",
+            summary: "Napoleon takes over the majority of Europe, remaking the government and installing the Napoleonic Code wherever he went. He promoted civil liberties and modernized the legal system, satisfying the people. Many of his reforms are still used in governments today.",
+            link: "https://en.wikipedia.org/wiki/Napoleonic_era",
+            time: Period((
+                start: Year(1799),
+                end: Year(1815),
+            )),
+            color: "purple",
+        ),
+        (
+            title: "Battle of Waterloo",
+            summary: "The battle where Napoleon finally lost and was captured. Conservative countries then exile him and attempt to restore the balance of power in the Congress of Vienna.",
+            link: "https://en.wikipedia.org/wiki/Battle_of_Waterloo",
+            time: Single(Date((
+                year: 1815,
+                month: 7,
+                day: 18,
+            ))),
+            color: "yellow",
+        ),
+        (
+            title: "Congress of Vienna",
+            summary: "A series of conservative meetings led by Metternich that determined the layout of Europe after the Napoleonic Wars and restored the balance of power. Its main goal was to maintain peace within Europe, and it was successful for many years. However, the Napoleonic Wars had spread nationalism throughout Europe, and further conflict was inevitable.",
+            link: "https://en.wikipedia.org/wiki/Congress_of_Vienna",
+            time: Period((
+                start: Year(1814),
+                end: Year(1816),
+            )),
+            color: "red",
+        ),
+        (
+            title: "Reform Act of 1832",
+            summary: "This act improved the representation of the people in Parliament by filling more seats based on the population of each area. It was successful in providing equal representation to based on population, but did not grant working class or women the right to vote.",
+            link: "https://en.wikipedia.org/wiki/Reform_Act_1832",
+            time: Single(Date((
+                year: 1832,
+                month: 6,
+                day: 7,
+            ))),
+            color: "yellow",
+        ),
+        (
+            title: "Reform Act of 1867",
+            summary: "This was an extension of the original Reform Act of 1832, aiming to provide equal right to vote per class instead of only per area. It still did not grant women the right to vote.",
+            link: "https://en.wikipedia.org/wiki/Reform_Act_1867",
+            time: Single(Date((
+                year: 1867,
+                month: 8,
+                day: 15,
+            ))),
+            color: "yellow",
+        ),
+        (
+            title: "Second Industrial Revolution",
+            summary: "A second wave of discovery and ingenuity, similar to the First Industrial Revolution. Although it didn't completely change all aspects of life like its predecessor, the Second Industrial Revolution still contained many massive technological achievements.",
+            link: "https://en.wikipedia.org/wiki/Second_Industrial_Revolution",
+            time: Period((
+                start: Year(1870),
+                end: Year(1914),
+            )),
+            color: "orange",
+        ),
+        (
+            title: "Consumer Radio",
+            summary: "The radio changed the lives of everyone. Every class had a radio, as they were relatively cheap to produce and had become quickly adopted by culture. With widespread adoption of the radio came the entire industry of broadcasting, and the ability to receive news faster than ever showed everyone just how bad WWI really was.",
+            link: "https://en.wikipedia.org/wiki/Radio",
+            time: Single(Year(1895)),
+            color: "orange",
+        ),
+        (
+            title: "Revolutions of 1848",
+            summary: "Attempts at revolution spread from Paris throughout Europe. Although none of them were very succesful, they showed just how powerful nationalism was.",
+            link: "https://en.wikipedia.org/wiki/Revolutions_of_1848",
+            time: Single(Year(1848)),
+            color: "yellow",
+        ),
+        (
+            title: "Great Exhibition",
+            summary: "Britain decided to build the Crystal Palace and host an exhibition showing off their technology. It attracted visitors from across europe, some of whom copied the inventions and used them to industrialize their home countries.",
+            link: "https://www.britannica.com/topic/Great-Exhibition-of-1851",
+            time: Single(Year(1851)),
+        ),
+        (
+            title: "Bloody Sunday",
+            summary: "Protesters in St. Petersburg were shot and killed by the Russian military. This event led to mass distrust and discontent with the Russian government.",
+            link: "https://en.wikipedia.org/wiki/Bloody_Sunday_(1905)",
+            time: Single(Date((
+                year: 1905,
+                month: 1,
+                day: 22,
+            ))),
+            color: "yellow",
+        ),
+        (
+            title: "Russian Revolution",
+            summary: "Russia was politically and economically unstable, as it had been tanking heavy losses throughout World War I, and the people were tired of fighting. The German military snuck Vladimir Lenin into St. Petersburg, where he delivered a communist speech and founded the Bolshevik party. With the Bolsheviks, Lenin then overthrew the Russian government and forced Tsar Nicholas II to abdicate.",
+            link: "https://en.wikipedia.org/wiki/Russian_Revolution",
+            time: Single(Year(1917)),
+            color: "yellow",
+        ),
+        (
+            title: "Age of Imperialism",
+            summary: "European countries, fueled by nationalism, all started to compete for land in Africa and Asia. While there wasn't much to gain economically, the countries did it to prove their status and prestige. They believed it was their duty to \"civilize the savages\" and educate the people of the territories they conquered. Conquering the territory was made significantly easier with modern military technology.",
+            link: "https://en.wikipedia.org/wiki/New_Imperialism",
+            time: Period((
+                start: Year(1870),
+                end: Year(1914),
+            )),
+            color: "purple",
+        ),
+        (
+            title: "WWI",
             summary: "The first major war with modern military technology. It showed people just how destructive weapons had become, leading to the development of tactics like trade wars to avoid direct conflict at all cost.",
             link: "https://en.wikipedia.org/wiki/World_War_I",
             time: Period((
@@ -236,7 +589,158 @@
                     day: 11,
                 )),
             )),
+            color: "red",
+        ),
+        (
+            title: "Treaty of Versailles",
+            summary: "Ended World War I. France punished Germany heavily. Created the League of Nations in attempt to stop any further wars. President Wilson proposed the Fourteen Points and the League of Nations, but eventually refused to ratify the treaty and withdrew into reckless isolationism.",
+            link: "https://en.wikipedia.org/wiki/Treaty_of_Versailles",
+            time: Single(Date((
+                year: 1919,
+                month: 6,
+                day: 28,
+            ))),
+            color: "yellow",
+        ),
+        (
+            title: "League of Nations",
+            summary: "A hastily-assembled attempt to maintain peace after World War I. Because it was put together quickly and not enough thought was put into it, it did not do much to prevent World War II.",
+            link: "https://en.wikipedia.org/wiki/League_of_Nations",
+            time: Period((
+                start: Year(1920),
+                end: Year(1946),
+            )),
+        ),
+        (
+            title: "Unification of Germany",
+            summary: "With the help of Bismarck and his Realpolitik maneuvering, Prussia eventually got all Northern and Southern German states to merge into one German Empire. Frederick William IV of Prussia took the role as Emperor of Germany, with Bismarck as Chancellor.",
+            link: "https://en.wikipedia.org/wiki/Unification_of_Germany",
+            time: Period((
+                start: Date((
+                    year: 1866,
+                    month: 8,
+                    day: 18,
+                )),
+                end: Date((
+                    year: 1871,
+                    month: 5,
+                    day: 10,
+                )),
+            )),
+            color: "yellow",
+        ),
+        (
+            title: "Soviet Union",
+            summary: "A union between Russia and its satellite states. Their goal was to spread communism and bring about the Marxist revolution in capitalist countries, which directly opposed the US's containment policy.",
+            link: "https://en.wikipedia.org/wiki/Soviet_Union",
+            time: Period((
+                start: Year(1922),
+                end: Year(1991),
+            )),
+            color: "yellow",
+        ),
+        (
+            title: "Great Depression",
+            summary: "Following the stock market collapse in the US, a depression spread throughout the world. Unemployment rates skyrocketed, leaving many people without jobs and many businesses without money to hire. The already-weakened Germany was hit especially hard, making it fragile enough for Hitler to take over.",
+            link: "https://en.wikipedia.org/wiki/Great_Depression",
+            time: Period((
+                start: Year(1929),
+                end: Year(1939),
+            )),
+            color: "yellow",
+        ),
+        (
+            title: "WWII",
+            summary: "World War II was a massive conflict that involved nearly every country on the globe. It was by far the deadliest conflict in history, with around 85 million deaths, most of which were civilians. It was caused by tensions that were not resolved in the League of Nations or Treaty of Versailles, as well as the rise of fascism.",
+            link: "https://en.wikipedia.org/wiki/World_War_II",
+            time: Period((
+                start: Year(1939),
+                end: Year(1945),
+            )),
             color: "orange",
+        ),
+        (
+            title: "Pearl Harbor",
+            summary: "The Japanese bombing of Pearl Harbor caused the US to enter WWII on the side of the Allies.",
+            link: "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor",
+            time: Single(Date((
+                year: 1941,
+                month: 12,
+                day: 7,
+            ))),
+            color: "yellow",
+        ),
+        (
+            title: "Holocaust",
+            summary: "Hitler, throughout his reign, had been using Jews as a scapegoat for Germany's loss in WWI. As the situation in WWII started to look dire once again, Hitler committed genocide by gassing over 6 million Jews.",
+            link: "https://en.wikipedia.org/wiki/The_Holocaust",
+            time: Period((
+                start: Year(1941),
+                end: Year(1945),
+            )),
+            color: "yellow",
+        ),
+        (
+            title: "D-Day",
+            summary: "A massive assault on Normandy by the Allied forces. They successfully landed over 150,000 troops and retook France from Germany. It spelled the beginning of the end of WWII.",
+            link: "https://www.history.com/articles/d-day",
+            time: Single(Date((
+                year: 1944,
+                month: 6,
+                day: 6,
+            ))),
+            color: "yellow",
+        ),
+        (
+            title: "Cold War",
+            summary: "A long period of tension between the US and communist countries (primarily the Soviet Union). It ended with the collapse of the Soviet Union.",
+            link: "https://en.wikipedia.org/wiki/Cold_War",
+            time: Period((
+                start: Year(1947),
+                end: Year(1991),
+            )),
+            color: "purple",
+        ),
+        (
+            title: "Berlin Wall",
+            summary: "After WWII, Berlin was divided between the Allied and Axis powers. The Soviet Union put up a wall between East and West Berlin to stop people from escaping communist territory, making the lives of the people in East Berlin miserable in the process.",
+            link: "https://en.wikipedia.org/wiki/Berlin_Wall",
+            time: Period((
+                start: Year(1961),
+                end: Year(1989),
+            )),
+            color: "yellow",
+        ),
+        (
+            title: "NATO",
+            summary: "NATO is a military alliance that was created to protect its members from outside attacks, thereby guaranteeing peace. It was primarily used as a check against the Soviet Union to prevent nuclear war.",
+            link: "https://en.wikipedia.org/wiki/NATO",
+            time: Period((
+                start: Year(1949),
+                end: Year(2025),
+            )),
+            color: "yellow",
+        ),
+        (
+            title: "United Nations",
+            summary: "An organization of 193 states, created to maintain world peace after WWII. It avoids military conflict, instead relying on tactics such as trade wars to prevent conflict.",
+            link: "https://en.wikipedia.org/wiki/United_Nations",
+            time: Period((
+                start: Year(1945),
+                end: Year(2025),
+            )),
+            color: "yellow",
+        ),
+        (
+            title: "Gorbachev Doctrine",
+            summary: "The main reason for the collapse of the Soviet Union. Gorbachev declared that the Soviet Union would not use force to stop protests in its satellite states. This led to the states rebelling and eventually declaring their independence.",
+            link: "https://en.wikipedia.org/wiki/Sinatra_Doctrine",
+            time: Single(Date((
+                year: 1989,
+                month: 10,
+                day: 25,
+            ))),
+            color: "yellow",
         ),
     ]
 )

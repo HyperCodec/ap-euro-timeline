@@ -38,7 +38,7 @@ pub fn Home() -> Element {
                     "Orange"
                 }
                 td {
-                    "Very significant (has a lasting effect on history)"
+                    "Extremely significant (has a major lasting effect on history)"
                 }
             }
             tr {
@@ -47,7 +47,7 @@ pub fn Home() -> Element {
                     "Yellow"
                 }
                 td {
-                    "Somewhat significant (balance of power, politics, etc)"
+                    "Very significant (affects balance of power, politics, economic conditions, etc)"
                 }
             }
             tr {
@@ -56,7 +56,7 @@ pub fn Home() -> Element {
                     "Green"
                 }
                 td {
-                    "Not very significant (notable, but not too many long-term effects)"
+                    "Somewhat significant (notable, but not too many long-term effects)"
                 }
             }
         }
