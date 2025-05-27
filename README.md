@@ -11,8 +11,8 @@ I disabled the GitHub Pages site because of some issues related to the path, but
 
 ### Key Takeaways
 - Making a (decently) complex graph with practically no HTML/CSS experience in a framework where (afaik) you can't use existing js libs &mdash; all on a tight deadline &mdash; is probably not the best idea for a final project.
-- Procrastinating with the actual content of the project until the last few days, then having to work for ~9 hours straight on a day off, is also not a great idea.
+- Procrastinating with the actual content of the project until the last few days, then having to work for ~9 hours straight the day before it is due, is also not a great idea.
 - SVG and HTML don't mix very well (CSS works with both though :D)
 - Dioxus probably isn't worth using when just implementing frontend &mdash; the fullstack feature eliminates a lot of the boilerplate, but using it for frontend alone just makes the process of developing a UI more complicated.
-- Don't do frontend when the school chromebooks have inspect element disabled (especially if you're planning on using newer frameworks like Dioxus).
-- CSS is actually a lot simpler than I thought it would be.
+- Don't do frontend when the school chromebooks have inspect element disabled (especially if you're planning on using WASM).
+- CSS is actually a lot easier than I thought it would be.
