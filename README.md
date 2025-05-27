@@ -7,7 +7,7 @@ This was created as my AP European History final project. Coming into this, I ha
 It contains a lot of the more important AP Euro events, but definitely doesn't have all of them (I was running out of time to go super in-depth, and it probably wouldn't have looked good anyway).
 I let my code get a bit spaghetti, but that's mostly because I didn't have time to rewrite things in a less sloppy way (plus I was still learning).
 
-I disabled the GitHub Pages site because of some issues related to the path, but the branch is still available for the static site files.
+I disabled the GitHub Pages site because of some issues related to the URL path (which I don't have time to fix), but the branch is still available for the static site files.
 
 ### Key Takeaways
 - Making a (decently) complex graph with practically no HTML/CSS experience in a framework where (afaik) you can't use existing js libs &mdash; all on a tight deadline &mdash; is probably not the best idea for a final project.
